@@ -4,11 +4,11 @@ from time import sleep
 # Requisito 1
 def fetch(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=3)
         response.raise_for_status()
-        sleep(2)
+        sleep(1)
     except (requests.HTTPError, requests.ReadTimeout):
-        pass
+        return None
     else:
         return response.text
 
